@@ -12,24 +12,24 @@
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas"></canvas>
     </div>
-<!--    <div id="loading-cover" style="display:none;">-->
-<!--      <div id="unity-loading-bar">-->
-<!--        <div id="unity-logo"><img src="logo.png"></div>-->
-<!--        <div id="unity-progress-bar-empty" style="display: none;">-->
-<!--          <div id="unity-progress-bar-full"></div>-->
-<!--        </div>-->
-<!--        <div class="spinner"></div>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div id="loading-cover" style="display:none;">
+      <div id="unity-loading-bar">
+        <div id="unity-logo"><img src="logo.png"></div>
+        <div id="unity-progress-bar-empty" style="display: none;">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+        <div class="spinner"></div>
+      </div>
+    </div>
     <div id="unity-fullscreen-button" style="display: none;"></div>
     <script>
       const hideFullScreenButton = "";
       const buildUrl = "Build";
       const loaderUrl = buildUrl + "/40378010e70db83297107fd5e9ba8fbf.js";
       const config = {
-        dataUrl: buildUrl + "/bb749dac4a9a2a2f0036d7ad5f3a0c75.unityweb",
-        frameworkUrl: buildUrl + "/d816d0958cfb99e00fb6867d0ccbd89f.unityweb",
-        codeUrl: buildUrl + "/89f54e52673792fdec665519fda47f48.unityweb",
+        dataUrl: buildUrl + "/66518f89ae40e18a08b4c9dc308c840d.unityweb",
+        frameworkUrl: buildUrl + "/2ba7ef120ad14148f53a387652b4a97c.unityweb",
+        codeUrl: buildUrl + "/903cb9c1451c58c1083e4fc18e882771.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Parachute Studios Ltd",
         productName: "ESA 5G/6G Hub",
@@ -38,9 +38,9 @@
 
       const container = document.querySelector("#unity-container");
       const canvas = document.querySelector("#unity-canvas");
-      // const loadingCover = document.querySelector("#loading-cover");
-      // const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
-      // const progressBarFull = document.querySelector("#unity-progress-bar-full");
+      const loadingCover = document.querySelector("#loading-cover");
+      const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
+      const progressBarFull = document.querySelector("#unity-progress-bar-full");
       const fullscreenButton = document.querySelector("#unity-fullscreen-button");
       const spinner = document.querySelector('.spinner');
 
@@ -63,17 +63,17 @@
         container.className = "unity-mobile";
         config.devicePixelRatio = 1;
       }
-      // loadingCover.style.display = "";
+      loadingCover.style.display = "";
 
       const script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          // spinner.style.display = "none";
-          // progressBarEmpty.style.display = "";
-          // progressBarFull.style.width = `${100 * progress}%`;
+          spinner.style.display = "none";
+          progressBarEmpty.style.display = "";
+          progressBarFull.style.width = `${100 * progress}%`;
         }).then((unityInstance) => {
-          // loadingCover.style.display = "none";
+          loadingCover.style.display = "none";
           if (canFullscreen) {
             if (!hideFullScreenButton) {
               fullscreenButton.style.display = "";
